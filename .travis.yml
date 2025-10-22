@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t 2iid/docker-react -f Dockerfile.dev .
+  # - docker run -d -p 3000:80 2iid/docker-react
+  # - docker exec -it <container_id> /bin/sh -c "npm install && npm run build"
+
+script:
+  - docker run -e CI=true 2iid/docker-react npm test -- --coverage

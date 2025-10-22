@@ -13,7 +13,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile.dev
-    command: npm test -- --watchAll=false
+    command: ["npm", "run", "test"]
     volumes:
       - /app/node_modules
       - .:/app
